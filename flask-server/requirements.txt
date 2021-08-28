@@ -11,3 +11,4 @@ six
 SQLAlchemy
 Werkzeug
 requests
+mysql-connector-python
