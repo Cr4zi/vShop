@@ -1,9 +1,9 @@
 from server import db
 
 class User(db.Model):
-    user_id = db.Column(db.Integer, primary_key=True, unique=True)
+    user_id = db.Column(db.String(15), primary_key=True, unique=True)
     username = db.Column(db.String(10), nullable=False, unique=True)
-    password = db.Column(db.Integer, nullable=False, unique=True)
+    password = db.Column(db.String(30), nullable=False, unique=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
     phone_nubmer = db.Column(db.Integer, nullable=True)
     first_name = db.Column(db.String(10), nullable=True)
