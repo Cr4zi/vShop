@@ -3,8 +3,10 @@ from flask_restful import Api, Resource, marshal_with, reqparse, abort, fields
 import os
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
+import sqlalchemy
 from utils.user import *
 import random
+import pymysql
 
 load_dotenv()
 
@@ -42,7 +44,7 @@ class Login(Resource):
             return {"Success": False, "Status Code": 400}
 
         # return {"Success": True, "user": user,"Status Code": 201}, 201
-        return user, 201
+        return user, 200
 
 class SignUp(Resource):
     signup_put_args = reqparse.RequestParser()
