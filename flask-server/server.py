@@ -49,8 +49,8 @@ class Login(Resource):
 class SignUp(Resource):
     signup_put_args = reqparse.RequestParser()
     signup_args = ["username", "password", "email", "phone number", "first name", "last name"]
-    signup_help = ["user username is required to login", "password is required to login", "email is required to login", 
-    "phone number is not required to login", "first name is not required to login", "last name is not required to login"]
+    signup_help = ["user username is required to signup", "password is required to signup", "email is required to signup", 
+    "phone number is not required to signup", "first name is not required to signup", "last name is not required to signup"]
     signup_required = [True, True, True, False, False, False]
     for i in range(6):
         signup_put_args.add_argument(signup_args[i], type=str, help=signup_help[i], required=signup_required[i])
@@ -79,8 +79,24 @@ class SignUp(Resource):
         return {"Success": False, "Status Code": 400}
 
 
+class Usernames(Resource):
+    usernames_post_args = reqparse.RequestParser()
+    usernames_post_args.add_argument("username", type=str, help="username is required to signup", required=True)
+
+    def post(self):
+        args = self.signup_put_args.parse_args()
+
+        user = User.query.filter_by(username=args["username"]).first()
+        if user is None:
+            return {"Success": True, "Status Code": 201}, 201
+
+        return {"Success": False, "Reason": "username already exists","Status Code": 400}
+
+
+
 api.add_resource(Login, "/login")
 api.add_resource(SignUp, "/signup")
+api.add_resource(Usernames, "/usernames")
 
 
 if __name__ == '__main__':
