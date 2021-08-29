@@ -1,4 +1,4 @@
-from server import db
+from __init__ import db
 
 class User(db.Model):
     user_id = db.Column(db.String(15), primary_key=True, unique=True)
