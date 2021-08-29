@@ -12,4 +12,7 @@ class Item(db.Model):
     shop_id = db.Column(db.String(15), primary_key=True, unique=True, nullable=False)
     item_name = db.Column(db.String(20), unique=False, nullable=False)
 
+    def __repr__(self):
+        return f"Item(Shop Id: {self.shop_id}, Item name: {self.item_name})"
+
 db.create_all()
