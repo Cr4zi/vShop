@@ -1,5 +1,5 @@
 from flask import Flask, request
-from flask_restful import Api, Resource, reqparse, abort
+from flask_restful import Api, Resource, marshal_with, reqparse, abort, fields
 import os
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
@@ -16,6 +16,16 @@ db = SQLAlchemy(app)
 
 db.create_all()
 
+login_fields = {
+    "user_id": fields.String,
+    "username": fields.String,
+    "password": fields.String,
+    "email": fields.String,
+    "phone number": fields.Integer,
+    "first_name": fields.String,
+    "last_name": fields.String,
+}
+
 class Login(Resource):
     login_post_args = reqparse.RequestParser()
     login_args = ["username", "password"]
@@ -23,13 +33,16 @@ class Login(Resource):
     for i in range(2):
         login_post_args.add_argument(login_args[i], type=str, help=login_help[i], required=True)
 
+    @marshal_with(login_fields)
     def post(self):
         args = self.login_post_args.parse_args()
 
         user = User.query.filter_by(username=args["username"], password=args["password"]).first()
-        print(user)
+        if user is None:
+            return {"Success": False, "Status Code": 400}
 
-        return {"UserExists": True}
+        # return {"Success": True, "user": user,"Status Code": 201}, 201
+        return user, 201
 
 class SignUp(Resource):
     signup_put_args = reqparse.RequestParser()
