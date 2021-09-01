@@ -16,8 +16,8 @@
     --PTextColor: #474747;
     --TextBlockColor: #D7D7D7;
     --TextBlockShadowColorDef: #5A6D9D;
-    --BigButtonBgcDef: #4697D1;
-    --SmallButtonBgcDef: #5C98CF;
+    --BigButtonBgcDef: #2458A6;
+    --SmallButtonBgcDef: #204884;
 }
 
 [Mode="Dark"] {
@@ -38,10 +38,12 @@ body {
     border-radius: 35px;
     font-size: 40px;
     font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+    
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-    text-decoration: none;
-
+    color: white;
     background-color: var(--BigButtonBgcDef);
 }
 
@@ -55,9 +57,12 @@ body {
     font-size: 40px;
     font-weight: 900;
     text-decoration: none;
+    text-decoration: none;
+    cursor: pointer;
+    
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-
+    color: white;
     background-color: var(--SmallButtonBgcDef);
 }
 
@@ -95,6 +100,10 @@ h6 {
     font-size: 15px;
 }
 
+input {
+    outline: none;
+}
+
 .BlackText {
     font-weight: 900;
 }
@@ -118,7 +127,12 @@ h6 {
 }
 
 .Icon {
-    /* */
+    user-drag: none; 
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .navbar img[alt="vShopIcon"] {
@@ -135,6 +149,18 @@ h6 {
     margin-right: 54px;
     font-size: 31px;
     text-decoration: none;
+    color: var(--NavOutPageColor);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.navbarText:hover {
+    color: var(--NavHoverColor);
+}
+
+.OnPage {
+    color: var(--TextColor) !important;
 }
 
 .userIconFrame {
