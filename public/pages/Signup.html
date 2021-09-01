@@ -6,23 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/basics.css">
     <link rel="stylesheet" href="../styles/signup.css">
-    <title>SignUp - vShop</title>
+    <title>Signup - vShop</title>
 </head>
 <body>
-    <div class="signup_card">
-        <div class="navbar">
-            <img src="../images/vShopIcon.svg" alt="vShopIcon" class="Icon">
-            <div class="navbar_items">
-                <div class="navbarItems">
-                    <a href="#" class="navbarText OnPage">Home</a>
-                    <a herf="/About.html/" class="navbarText">About</a>
-                    <a herf="./Explore.html" class="navbarText">Explore</a>
+    <div class="navbar">
+        <img src="../images/vShopIcon.svg" alt="vShopIcon" class="Icon">
+        <div class="navbar_items">
+            <div class="navbarItems">
+                <a href="./Home.html" class="navbarText OnPage">Home</a>
+                <a herf="/About.html/" class="navbarText">About</a>
+                <a herf="./Explore.html" class="navbarText">Explore</a>
+            </div>
+            <div class="userIconFrame">
+                <img src="../images/userIcon.svg" alt="UserIcon">
+            </div>
+        </div>
+    </div>
+    <div class="signup_card" id="App">
+        <div style=" display: flex; box-shadow: 0 4px 100px rgba(000, 000, 000, 0.25); border-radius: 25px;">
+            <div class="signup_card_left">
+                
+            </div>
+            <div class="signup_card_right">
+                <div class="signup_card_right_top">
+                    <img src="../images/vShopIcon.svg" alt="vShopIcon">
+
+                    <div class="signorlog">
+                        <a href="#" class="signup_btn On">Sign Up</a>
+                        <a href="./Login.html" class="login_btn">Login</a>
+                    </div>
                 </div>
-                <div class="userIconFrame">
-                    <img src="../images/userIcon.svg" alt="UserIcon">
+                <div class="signup_card_right_form">
+                    <h2 style="font-size: 40px; user-select: none; margin-bottom: 40.82px;" class="BlackText">Sign Up - Public Info</h2>
+                    <div class="input">
+                        <input type="text" id="username" name="Username" required>
+                        <label for="username">User Name</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" id="fname" name="fname" required>
+                        <label for="fname">Full Name</label>
+                    </div>
+                    <div class="button" size="big" style="margin-top: 78.69px; justify-self: center;">Next</div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/vue@3.0.5"></script>
+    <script src="../src/sign.js"></script>
+    <script>
+        const UsernameInput = document.getElementById("username");
+
+        async function isExists(username) {
+            const PostMethod = {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                },
+                body: JSON.stringify({"username": username})
+            }
+            console.log(PostMethod)
+            const res = await fetch('https://vshop.hol1ow.repl.co/usernames', PostMethod);
+            const json = await res.json();
+            console.log(json)
+        }
+
+        UsernameInput.addEventListener("focusout", (e) => {
+            isExists(e.target.value);
+        })
+    </script>
 </body>
 </html>
+
+<!-- 83.73 -->

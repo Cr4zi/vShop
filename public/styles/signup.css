@@ -1,0 +1,151 @@
+.signup_card {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.signup_card_right {
+    display: block;
+    width: 749.82px;
+    height: 708.23px;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    justify-content: center;
+
+    background: #E6E6E6;
+}
+
+.signup_card_left {
+    width: 599.18px;
+    height: 708.23px;
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+
+    background: #2F2F47;
+}
+
+.signup_card_right_top {
+    display: flex;
+    margin-top: 14px;
+    padding: 0 17px;
+    justify-content: space-between;
+    color: white;
+}
+
+.signorlog {
+    display: flex;
+}
+
+.signup_btn {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.login_btn {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.signorlog .On {
+    background: #4461F2;
+}
+
+.signorlog * {
+    width: 89.93px;
+    height: 33.73px;
+    text-decoration: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #758AF0;
+}
+
+.signup_card_right_form {
+    margin-top: 74.65px;
+    display: grid;
+    justify-content: center;
+}
+
+.input {
+    display: flex;
+    position: relative;
+    width: max-content;
+    margin-top: 33.57px;
+    justify-self: center;
+}
+
+.button[size="big"] {
+    width: 300.15px;
+    height: 56.21px;
+    border-radius: 10px;
+    background-color: #4461F2;
+    color: white;
+}
+
+.input input {
+    z-index: 1;
+    width: 300.15px;
+    height: 56.21px;
+    font-size: 25px;
+    background: rgba(231, 240, 251, 0.5);
+    border: 1px solid rgba(162, 162, 162, 0.2);
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.input label {
+    z-index: 2;
+    position: absolute;
+    font-size: 25px;
+    top: 11px;
+    user-select: none;
+    left: 14px;
+    transition: all .3s ease;
+}
+
+.input label::before {
+    content: "";
+    position: absolute;
+    display: block;
+    background-color: #E6E6E6;
+    height: 10px;
+    top: -21px;
+    z-index: -1;
+    transition: all 0s ease;
+}
+
+.input input:focus {
+    background: #C9DBF0;
+    border: 1px solid rgba(68, 138, 218, 0.75) !important;
+}
+
+.input input:focus + label,
+.input input:not(:focus):valid + label,
+.input input:not(:empty):not(:focus):invalid + label {
+    top: -10px;
+    font-size: 15px;
+}
+
+.input input:focus + label::before,
+.input input:not(:focus):valid + label::before,
+.input input:not(:empty):not(:focus):invalid + label::before {
+    top: 1px;
+}
+
+.input input:focus + label::before,
+.input input:valid + label::before {
+    display: block;
+}
+
+
+
+.input label[for="username"]::before {
+    width: 72.9px;
+}
+
+.input label[for="fname"]::before {
+    width: 65.2px;
+}
