@@ -1,14 +1,13 @@
 from flask import Flask, request
 from flask_restful import Api, Resource, marshal_with, reqparse, abort, fields
 import os
-from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy
 from __init__ import *
 import random
 import pymysql
 
-load_dotenv()
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -81,18 +80,16 @@ class SignUp(Resource):
 
 class Usernames(Resource):
     usernames_post_args = reqparse.RequestParser()
-    usernames_post_args.add_argument("username", type=str, help="username is required to signup", required=True)
+    usernames_post_args.add_argument("username", type=str, help="username is required to requests name", required=True)
 
     def post(self):
-        args = self.signup_put_args.parse_args()
+        args = self.usernames_post_args.parse_args()
 
         user = User.query.filter_by(username=args["username"]).first()
         if user is None:
-            return {"Success": True, "Status Code": 201}, 201
+            return {"status": 200, "found": False, "message": "Username is not exists"}, 200
 
-        return {"Success": False, "Reason": "username already exists","Status Code": 400}
-
-
+        return {"status": 200, "found": True, "message": "Username is already exists"}, 200
 
 api.add_resource(Login, "/login")
 api.add_resource(SignUp, "/signup")
@@ -100,4 +97,4 @@ api.add_resource(Usernames, "/usernames")
 
 
 if __name__ == '__main__':
-    app.run(debug=True) # (debug=True) Only run in development env **only**
+    app.run(debug=True, port=8000, host='0.0.0.0') # (debug=True) Only run in development env **only**
