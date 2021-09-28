@@ -75,7 +75,7 @@ class SignUp(Resource):
             db.session.commit()
             return {"Success": True, "Status Code": 201}, 201
         
-        return {"Success": False, "Status Code": 400}
+        return {"Success": False, "Status Code": 400}, 400
 
 
 class Usernames(Resource):
