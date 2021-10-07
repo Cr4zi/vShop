@@ -67,10 +67,7 @@ class SignUp(Resource):
             #         return generate_id()
             #     return usr_id
 
-            id_part1 = random.randint(1000000000, 4294967295)
-            id_part2 = random.randint(1000000000, 4294967295)
-
-            user = User(user_id=str(id_part1) + str(id_part2), username=args["username"], password=args["password"], email=args["email"], phone_nubmer=args["phone number"],
+            user = User(username=args["username"], password=args["password"], email=args["email"], phone_nubmer=args["phone number"],
             first_name=args["first name"], last_name=args["last name"])
             db.session.add(user)
             db.session.commit()
