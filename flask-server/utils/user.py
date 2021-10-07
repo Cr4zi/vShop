@@ -2,7 +2,7 @@ from __init__ import db
 from uuid import uuid4
 
 def gen_uuid():
-    return uuid4().hex()
+    return uuid4().hex
 
 class User(db.Model):
     user_id = db.Column(db.String(15), primary_key=True, unique=True, default=gen_uuid)
