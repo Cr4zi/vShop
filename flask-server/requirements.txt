@@ -3,6 +3,7 @@ click
 Flask
 Flask-RESTful
 Flask-SQLAlchemy
+Flask-bcrypt
 itsdangerous
 Jinja2
 MarkupSafe
