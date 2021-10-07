@@ -43,7 +43,6 @@ class Login(Resource):
         if user is None:
             return {"Success": False, "Status Code": 400}
 
-        # return {"Success": True, "user": user,"Status Code": 201}, 201
         return user, 200
 
 class SignUp(Resource):
@@ -60,13 +59,6 @@ class SignUp(Resource):
 
         user = User.query.filter_by(username=args["username"], password=args["password"]).first()
         if user is None:
-
-            # def generate_id():
-            #     usr_id = random.randint(100000000000, 1000000000000)
-            #     user = User.query.filter_by(user_id=generate_id())
-            #     if user is not None:
-            #         return generate_id()
-            #     return usr_id
 
             user = User(username=args["username"], password=args["password"], email=args["email"], phone_nubmer=args["phone number"],
             first_name=args["first name"], last_name=args["last name"])
