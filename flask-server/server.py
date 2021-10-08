@@ -41,7 +41,7 @@ class Login(Resource):
 
         user = User.query.filter_by(username=args["username"], password=args["password"]).first()
         if user is None:
-            return {"Success": False, "Status Code": 400}
+            return {"Success": False, "Status Code": 400}, 400
 
         return user, 200
 

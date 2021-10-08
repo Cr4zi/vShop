@@ -1,8 +1,10 @@
 from __init__ import db
 from uuid import uuid4
 
+
 def gen_uuid():
     return uuid4().hex
+
 
 class User(db.Model):
     __tablename__ = "users"
