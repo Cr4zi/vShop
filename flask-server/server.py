@@ -8,7 +8,6 @@ import random
 import pymysql
 
 
-
 app = Flask(__name__)
 api = Api(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///database.db"
@@ -78,13 +77,36 @@ class Usernames(Resource):
 
         user = User.query.filter_by(username=args["username"]).first()
         if user is None:
-            return {"status": 200, "found": False, "message": "Username is not exists"}, 200
+            return {"Status Code": 200, "found": False, "message": "Username is not exists"}, 200
 
-        return {"status": 200, "found": True, "message": "Username is already exists"}, 200
+        return {"Status Code": 200, "found": True, "message": "Username is already exists"}, 200
+
+class Create_Shop(Resource):
+    shop_args = reqparse.RequestParser()
+    shop_args = ["username", "shop_name"]
+    shop_args_help = ["Username that the shop belongs to", "shop name ._."]
+    args_required = [True, True]
+    for i in range(2):
+        shop_args.add_argument(shop_args[i], type=str, help=shop_args_help[i], required=args_required[i])
+
+    def put(self):
+        args = self.shop_args.parse_args()
+        user = User.query.filter_by(username=args["username"]).first()
+
+        if user is not None:
+            return {"Success": False, "message": "Username already exists" ,"Status Code": 400}, 400
+
+        shop = Shop(author_id=user["user_id"])
+        db.session.add(shop)
+        db.session.commit()
+
+        return {"Success": True, "Status Code": 200}, 200
+
 
 api.add_resource(Login, "/login")
 api.add_resource(SignUp, "/signup")
 api.add_resource(Usernames, "/usernames")
+api.add_resource(Create_Shop, "/createShop")
 
 
 if __name__ == '__main__':
