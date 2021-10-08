@@ -1,8 +1,10 @@
 from __init__ import db
 from uuid import uuid4
 
+
 def gen_uuid():
     return uuid4().hex
+
 
 class Shop(db.Model):
     author_id = db.Column(db.String(32), primary_key=True, unique=True, nullable=False)
@@ -11,6 +13,7 @@ class Shop(db.Model):
 
     def __repr__(self):
         return f"Shop(Author_id: {self.author_id}, shop_id: {self.shop_id}, item: {self.items})"
+
 
 class Item(db.Model):
     item_id = db.Column(db.String(15), primary_key=True, unique=True, default=gen_uuid)
