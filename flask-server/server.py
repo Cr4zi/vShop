@@ -27,6 +27,7 @@ login_fields = {
     "last_name": fields.String,
 }
 
+
 class Login(Resource):
     login_post_args = reqparse.RequestParser()
     login_args = ["username", "password"]
@@ -43,6 +44,7 @@ class Login(Resource):
             return {"Success": False, "Status Code": 400}
 
         return user, 200
+
 
 class SignUp(Resource):
     signup_put_args = reqparse.RequestParser()
@@ -81,7 +83,8 @@ class Usernames(Resource):
 
         return {"Status Code": 200, "found": True, "message": "Username is already exists"}, 200
 
-class Create_Shop(Resource):
+
+class CreateShop(Resource):
     shop_put_args = reqparse.RequestParser()
     shop_args = ["username", "shop_name"]
     shop_args_help = ["Username that the shop belongs to", "shop name ._."]
@@ -106,7 +109,7 @@ class Create_Shop(Resource):
 api.add_resource(Login, "/login")
 api.add_resource(SignUp, "/signup")
 api.add_resource(Usernames, "/usernames")
-api.add_resource(Create_Shop, "/createShop")
+api.add_resource(CreateShop, "/createShop")
 
 
 if __name__ == '__main__':
