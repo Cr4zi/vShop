@@ -82,12 +82,12 @@ class Usernames(Resource):
         return {"Status Code": 200, "found": True, "message": "Username is already exists"}, 200
 
 class Create_Shop(Resource):
-    shop_args = reqparse.RequestParser()
+    shop_put_args = reqparse.RequestParser()
     shop_args = ["username", "shop_name"]
     shop_args_help = ["Username that the shop belongs to", "shop name ._."]
     args_required = [True, True]
     for i in range(2):
-        shop_args.add_argument(shop_args[i], type=str, help=shop_args_help[i], required=args_required[i])
+        shop_put_args.add_argument(shop_args[i], type=str, help=shop_args_help[i], required=args_required[i])
 
     def put(self):
         args = self.shop_args.parse_args()
