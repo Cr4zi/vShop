@@ -4,7 +4,6 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy
 from __init__ import *
-import random
 import pymysql
 
 
