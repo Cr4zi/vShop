@@ -97,7 +97,7 @@ class CreateShop(Resource):
         user = User.query.filter_by(username=args["username"]).first()
 
         if user is not None:
-            return {"Success": False, "message": "Username already exists" ,"Status Code": 400}, 400
+            return {"Success": False, "message": "Username already exists", "Status Code": 400}, 400
 
         shop = Shop(author_id=user["user_id"])
         db.session.add(shop)
