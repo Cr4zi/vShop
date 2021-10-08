@@ -5,6 +5,7 @@ def gen_uuid():
     return uuid4().hex
 
 class User(db.Model):
+    __tablename__ = "users"
     user_id = db.Column(db.String(15), primary_key=True, unique=True, default=gen_uuid)
     username = db.Column(db.String(10), nullable=False, unique=True)
     password = db.Column(db.String(30), nullable=False, unique=True)
