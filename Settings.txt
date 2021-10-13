@@ -1,0 +1,26 @@
+Account:
+	Username
+	Password
+	Change
+	Avatar
+	Mail
+	PhoneNumber(Set 2fa)
+	Payment
+	Verify
+	Beta(If there is one...)
+
+Shop:
+	Name(Max 15L)
+	Description(Max 150L)
+	Icon
+	Tags(Add/Set/Remove)
+	Notifications(On/Off)
+	DiscountCode(Add/Set/Delete)
+	MaxClients(( On -> Set )/Off)
+	Partners(Table)
+
+Item:
+	Name(Max 25L)
+	Description(Max 120L)
+	Images(Table)
+	Price
