@@ -66,7 +66,7 @@ body {
     position: absolute;
     justify-self: center;
     z-index: -1;
-    animation: HoveringImage 5s ease-in-out infinite;
+    animation: HoveringImage 3s ease-in-out infinite;
 }
 
 .remocard {
@@ -78,7 +78,6 @@ body {
     border: 7px solid #2e2e2e;
     border-radius: 25px;
     border-top-right-radius: 0px;
-    box-shadow: 0px 0px 250px 0px rgba(0, 0, 0, 0.5);
 }
 
 #DiscordCard {
@@ -91,12 +90,11 @@ body {
 /* @keyframes: */
 
 @keyframes HoveringImage {
-    0%,100% {
-        margin: 110px 0 0 0;
+    0%, 100% {
+        margin: 70px 0 0 0;
     }
-
     50% {
-        margin: 90px 0 0 0;
+        margin: 40px 0 0 0;
     }
 }
 
