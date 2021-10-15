@@ -1,5 +1,5 @@
 fetch("https://discord.com/api/guilds/892790509691621406/widget.json").then(res => res.json()).then(data => {
-    document.getElementById("MemberCount").innerHTML = `${data.members.length} Members`
+    document.getElementById("MemberCount").innerHTML = `${data.members.length} Online`
 })
 
 document.querySelector("[alt=DiscordIcon]").addEventListener("click", (e) => {
