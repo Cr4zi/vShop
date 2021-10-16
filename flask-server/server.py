@@ -92,7 +92,7 @@ class CreateShop(Resource):
         shop_put_args.add_argument(shop_args[i], type=str, help=shop_args_help[i], required=args_required[i])
 
     def put(self):
-        args = self.shop_args.parse_args()
+        args = self.shop_put_args.parse_args()
         user = User.query.filter_by(username=args["username"]).first()
 
         if user is None:
