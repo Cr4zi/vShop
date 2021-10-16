@@ -104,11 +104,32 @@ class CreateShop(Resource):
 
         return {"Success": True, "Status Code": 200}, 200
 
+class CreateItem(Resource):
+    item_put_args = reqparse.RequestParser()
+    item_args = ["shop_name", "categories", "item_name"]
+    item_args_help = ["Shop name that the item belongs to", "item categories", "item name is required"]
+    args_required = [True, True, True]
+    for i in range(3):
+        item_put_args.add_argument(item_put_args[i], help=item_args_help[i], type=str, required=args_required[i])
+
+    def put(self):
+        args = self.item_put_args.parse_args()
+        shop = Shop.query.filter_by(shop_name=args["shop_name"]).first()
+
+        if shop is None:
+            return {"Success": False, "message": f"There is no shop name named {args['shop_name']}", 'Status Code': 400}, 400
+
+        item = Item(shop_id=shop.shop_id, item_name=args["item_name"], categories=args["categories"])
+        db.session.add(item)
+        db.session.commit()
+
+        return {"Success": True, "message": f"create item in shop {args['shop_name']}", "Status Code": 200}, 200
 
 api.add_resource(Login, "/login")
 api.add_resource(SignUp, "/signup")
 api.add_resource(Usernames, "/usernames")
 api.add_resource(CreateShop, "/createShop")
+api.add_resource(CreateItem, "/createItem")
 
 
 if __name__ == '__main__':

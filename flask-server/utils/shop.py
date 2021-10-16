@@ -7,6 +7,7 @@ def gen_uuid():
 
 
 class Shop(db.Model):
+    shop_name = db.Column(db.String(25), unique=True, nullable=False)
     author_id = db.Column(db.String(32), primary_key=True, unique=True, nullable=False)
     shop_id = db.Column(db.String(15), unique=True, nullable=False, default=gen_uuid)
     items = db.relationship('Item', backref='shop', lazy=True)
