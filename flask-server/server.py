@@ -110,7 +110,7 @@ class CreateItem(Resource):
     item_args_help = ["Shop name that the item belongs to", "item categories", "item name is required"]
     args_required = [True, True, True]
     for i in range(3):
-        item_put_args.add_argument(item_put_args[i], help=item_args_help[i], type=str, required=args_required[i])
+        item_put_args.add_argument(item_args[i], help=item_args_help[i], type=str, required=args_required[i])
 
     def put(self):
         args = self.item_put_args.parse_args()
