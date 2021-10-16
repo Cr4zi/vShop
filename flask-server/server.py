@@ -98,7 +98,7 @@ class CreateShop(Resource):
         if user is None:
             return {"Success": False, "message": f"There is no user named {args['username']}", "Status Code": 400}, 400
 
-        shop = Shop(author_id=user.user_id)
+        shop = Shop(author_id=user.user_id, shop_name=args["shop_name"])
         db.session.add(shop)
         db.session.commit()
 
