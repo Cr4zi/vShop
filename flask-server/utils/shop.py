@@ -17,7 +17,7 @@ class Shop(db.Model):
 
 class Item(db.Model):
     item_id = db.Column(db.String(15), primary_key=True, unique=True, default=gen_uuid)
-    shop_id = db.Column(db.String(15), db.ForeignKey("shop.id"), nullable=False)
+    shop_id = db.Column(db.String(15), db.ForeignKey("shop.shop_id"), nullable=False)
     item_name = db.Column(db.String(20), unique=False, nullable=False)
     categories = db.Column(db.String(500), unique=False, nullable=False)
 
