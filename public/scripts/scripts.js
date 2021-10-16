@@ -1,5 +1,11 @@
-fetch("https://discord.com/api/guilds/892790509691621406/widget.json").then(res => res.json()).then(data => {
-    document.getElementById("MemberCount").innerHTML = `${data.members.length} Online`
+fetch("assets/membercount.json").then(res => res.json()).then(data => {
+    document.getElementById("MemberCount").innerHTML = `${data.res} Members`
+});
+
+document.addEventListener("click", (e) => {
+    if (document.getElementById("DiscordCard").style.display != "none" && e.srcElement?.alt != "DiscordIcon") {
+        document.getElementById("DiscordCard").style.display = "none";
+    }
 })
 
 document.querySelector("[alt=DiscordIcon]").addEventListener("click", (e) => {
