@@ -12,6 +12,10 @@ body {
     min-height: 60px;
 }
 
+img {
+    user-select: none;
+}
+
 :root {
     /* ... */
 }
@@ -66,7 +70,7 @@ body {
     position: absolute;
     justify-self: center;
     z-index: -1;
-    animation: HoveringImage 3s ease-in-out infinite;
+    animation: HoveringImage 2s ease-in-out infinite;
 }
 
 .remocard {
