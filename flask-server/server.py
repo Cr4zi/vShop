@@ -3,46 +3,68 @@ from flask_restful import Api, Resource, marshal_with, reqparse, abort, fields
 import os
 from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
 from __init__ import *
 import pymysql
 
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 api = Api(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///database.db"
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET")
+jwt = JWTManager(app)
+
 db = SQLAlchemy(app)
 
 db.create_all()
 
-login_fields = {
-    "user_id": fields.String,
-    "username": fields.String,
-    "password": fields.String,
-    "email": fields.String,
-    "phone number": fields.Integer,
-    "first_name": fields.String,
-    "last_name": fields.String,
-}
+#login_fields = {
+#    "user_id": fields.String,
+#    "username": fields.String,
+#    "password": fields.String,
+#    "email": fields.String,
+#    "phone number": fields.Integer,
+#    "first_name": fields.String,
+#    "last_name": fields.String,
+#}
 
 
 class Login(Resource):
     login_post_args = reqparse.RequestParser()
-    login_args = ["username", "password"]
-    login_help = ["user username is required to login", "password is required to login"]
+    login_args = ["email", "password"]
+    login_help = ["email is required to login", "password is required to login"]
     for i in range(2):
         login_post_args.add_argument(login_args[i], type=str, help=login_help[i], required=True)
 
-    @marshal_with(login_fields)
+    # @marshal_with(login_fields)
     def post(self):
         args = self.login_post_args.parse_args()
 
-        user = User.query.filter_by(username=args["username"], password=args["password"]).first()
+        user = User.query.filter_by(email=args["email"], password=args["password"]).first()
         if user is None:
             return {"Success": False, "Status Code": 400}, 400
 
-        return user, 200
+        access_token = create_access_token(identity=args["email"])
+        print(f"Access Token: {access_token}")
+
+        try:
+            first_name = user.first_name
+        except AttributeError as e:
+            first_name = None
+
+        try:
+            last_name = user.last_name
+        except AttributeError as e:
+            last_name = None
+
+        return {"user_id": user.user_id, "username": user.username, "password": user.password, "email": user.email, "first_name": first_name, "last_name": last_name, "access_token": access_token}, 200
 
 
 class SignUp(Resource):
