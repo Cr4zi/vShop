@@ -14,3 +14,4 @@ Werkzeug
 requests
 mysql-connector-python
 pymysql
+Flask-JWT-Extended
