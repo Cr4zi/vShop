@@ -110,7 +110,8 @@ class CreateShop(Resource):
     args_required = [True, True]
     for i in range(2):
         shop_put_args.add_argument(shop_args[i], type=str, help=shop_args_help[i], required=args_required[i])
-
+    
+    @jwt_required()
     def put(self):
         args = self.shop_put_args.parse_args()
         user = User.query.filter_by(username=args["username"]).first()
@@ -132,6 +133,7 @@ class CreateItem(Resource):
     for i in range(3):
         item_put_args.add_argument(item_args[i], help=item_args_help[i], type=str, required=args_required[i])
 
+    @jwt_required()
     def put(self):
         args = self.item_put_args.parse_args()
         shop = Shop.query.filter_by(shop_name=args["shop_name"]).first()
