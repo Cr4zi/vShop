@@ -52,7 +52,6 @@ class Login(Resource):
             return {"Success": False, "Status Code": 400}, 400
 
         access_token = create_access_token(identity=args["email"])
-        print(f"Access Token: {access_token}")
 
         try:
             first_name = user.first_name
