@@ -80,6 +80,13 @@ class SignUp(Resource):
 
         user = User.query.filter_by(username=args["username"], password=args["password"]).first()
         if user is None:
+            username_user = User.query.filter_by(username=args["username"]).first()
+            if username_user is not None:
+                return {"Success": False, "Status Code": 400}, 400
+
+            pass_user = User.query.filter_by(password=args["password"])
+            if pass_user is not None:
+                return {"Success": False, "Status Code": 400}, 400
 
             user = User(username=args["username"], password=args["password"], email=args["email"], phone_nubmer=args["phone number"],
             first_name=args["first name"], last_name=args["last name"])
