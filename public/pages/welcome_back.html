@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/main.css">
+    <link rel="stylesheet" href="../assets/styles/home.css">
+    <link rel="shortcut icon" href="../assets/images/vShopIcon_dark.png" type="image/x-icon">
+    <title>vShop - Home</title>
+</head>
+<body>
+    <nav draggable="false" class="navbar">
+        <div style="display: flex;">
+            <a href="/#"><img draggable="false" src="../assets/images/vShopIcon_dark_text.png" alt="vShopTextIcon" width="101px"></a>
+            <div class="navbar_items">
+                <div class="navbar_item">
+                    <a href="myplace"><h5 style="color: var(--Grey);">MyPlace</h5></a>
+                </div>
+                <div style="margin-left: 70px;">
+                    <a href="explore"><h5 style="color: var(--Grey);">Explore</h5></a>
+                </div>
+                <div style="margin-left: 70px;">
+                    <a href="recommended"><h5 style="color: var(--Grey);">Recommended</h5></a>
+                </div>
+                <div id="MoreButton" style="margin-left: 70px; position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer;">
+                    <div id="MoreBorder" class="navbar_item_border" style="width: 85px; height: 36px; display: none;"></div>
+                    <h5 style="color: var(--Grey); cursor: pointer;">More</h5>
+                </div>
+                <div id="MoreCard" class="remocard" style="display: none;">
+                    <a href="about" style="margin-bottom: 25px;"><h5>About</h5></a>
+                    <a href="tutorial" style="margin-bottom: 25px;"><h5>Tutorial</h5></a>
+                    <h5 style="cursor: pointer; color: var(--Red) !important; position: absolute; bottom: 40px">Logout</h5>
+                </div>
+            </div>
+        </div>
+        <img draggable="false" src="../assets/images/Settings.svg" alt="Settings" height="32.17px">
+    </nav>
+    <div class="content">
+        <div>
+            <h1>Welcome Back<br>{{Username}}</h1>
+            <h5 style="color: var(--Grey); margin-top: 20px;">Be seller or buyer and manage your<br>money from here or your payment method.</h5>
+            <div style="margin-top: 22px; display: flex;">
+                <a href="myplace" class="primary_button"><h5>MyPlace</h5></a>
+                <a href="explore" class="primary_button" style="margin-left: 15px;"><h5>Explore</h5></a>
+            </div>
+        </div>
+        <img draggable="false" src="../assets/images/Shop.png" alt="Shop" width="700px">
+    </div>
+    <script src="../assets/scripts/scripts.js"></script>
+</body>
+</html>

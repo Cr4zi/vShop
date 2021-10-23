@@ -4,7 +4,7 @@
   "description": "An online shop",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ."
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "dependencies": {
     "discord.js": "^13.2.0",
     "express": "^4.17.1",
+    "nodemon": "^2.0.14",
     "path": "^0.12.7"
   }
 }

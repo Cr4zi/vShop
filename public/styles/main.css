@@ -1,23 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
+:root {
+    --Black: #2E2E2E;
+    --Grey: #474747;
+    --Red: #D43C32;
+    --PrimaryButton-Blue: #3672B9;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    display: grid;
-    min-height: 60px;
-}
-
 img {
     user-select: none;
 }
 
-:root {
-    /* ... */
+h1 {
+    color: var(--Black);
+    font-family: Poppins;
+    font-size: 70px;
+    line-height: 112.5%;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    color: var(--Black);
+    font-family: Poppins;
+    font-size: 50px;
+    line-height: 112.5%;
+    letter-spacing: -0.02em;
+}
+
+h3 {
+    color: var(--Black);
+    font-family: Poppins;
+    font-size: 35px;
+    line-height: 112.5%;
+    letter-spacing: -0.02em;
+}
+
+h4 {
+    color: var(--Black);
+    font-family: Poppins;
+    font-size: 30px;
+    line-height: 112.5%;
+    letter-spacing: -0.02em;
+}
+
+h5 {
+    color: var(--Black);
+    font-family: Poppins;
+    font-size: 20px;
+    line-height: 112.5%;
+    letter-spacing: -0.02em;
+}
+
+h6 {
+    color: var(--Black);
+    font-family: Poppins;
+    font-size: 15px;
+    line-height: 112.5%;
+    letter-spacing: -0.02px;
+}
+
+p {
+    color: var(--Black);
+    font-family: Poppins;
+    font-size: 10px;
+    line-height: 112.5%;
+    letter-spacing: -0.02em;
+}
+
+a {
+    text-decoration: none;
+}
+
+.barlow {
+    font-family: Barlow;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
 /* Global: */
@@ -35,42 +99,40 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    user-select: none;
 }
 
 .navbar img {
     user-select: none;
 }
 
-/* Pages/Coming_Soon: */
-.content {
-    position: relative;
-    display: grid;
+.navbar_items {
+    margin-left: 110px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar_item {
+    align-items: center;
+}
+
+.primary_button {
+    display: flex;
+    width: 220px;
+    height: 50px;
     justify-content: center;
-    top: 188px;
+    align-items: center;
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+    
+    background-color: var(--PrimaryButton-Blue);
+    border-radius: 15px;
 }
 
-.content h1 {
-    font-family: "Barlow", sans-serif;
-    font-size: 100px;
-    color: #2E2E2E;
-    text-align: center;
-}
 
-.content h4 {
-    font-family: "Poppins", sans-serif;
-    font-size: 20px;
-    color: #474747;
-    margin: 30px 0 0 0;
-    line-height: 112.5%;
-    text-align: center;
-    letter-spacing: -0.02em;
-}
-
-.content img {
-    position: absolute;
-    justify-self: center;
-    z-index: -1;
-    animation: HoveringImage 2s ease-in-out infinite;
+.primary_button h1, .primary_button h2, .primary_button h3, .primary_button h4, .primary_button h5, .primary_button h6, .primary_button p {
+    color: #F0F0F0;
 }
 
 .remocard {
@@ -81,79 +143,31 @@ img {
     background-color: #F4F4F4;
     border: 7px solid #2e2e2e;
     border-radius: 25px;
-    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
 }
 
-#DiscordCard {
+#MoreCard {
     width: 234px;
-    height: 299px;
-    right: 135px;
+    height: 444px;
     top: 63px;
+    padding: 40px 78px;
 }
 
-/* @keyframes: */
-
-@keyframes HoveringImage {
-    0%, 100% {
-        margin: 70px 0 0 0;
-    }
-    50% {
-        margin: 40px 0 0 0;
-    }
+#MoreCard a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@keyframes CardAnimation {
-    0% {
-        right: 190px;
-    }
-    100% {
-        right: 135px;
-    }
+#MoreCard h5 {
+    color: var(--Grey);
+    text-align: center;
 }
 
-/* Media: */
-
-@media only screen and (max-width: 700px) {
-    .navbar {
-        padding: 0 40px;
-        height: 110px;
-        width: 100%;
-        position: absolute;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .content h1 {
-        font-family: "Barlow", sans-serif;
-        font-size: 70px;
-        color: #2E2E2E;
-        text-align: center;
-    }
+.navbar_item_border {
+    position: absolute;
     
-    .content h4 {
-        font-family: "Poppins", sans-serif;
-        font-size: 15px;
-        color: #474747;
-        margin: 30px 0 0 0;
-        line-height: 112.5%;
-        text-align: center;
-        letter-spacing: -0.02em;
-    }
-
-    #DiscordCard {
-        width: 234px;
-        height: 299px;
-        right: 85px;
-        top: 63px;
-    }
-
-    @keyframes CardAnimation {
-        0% {
-            right: 140px;
-        }
-        100% {
-            right: 85px;
-        }
-    }
+    background-color: transparent;
+    border: 4px solid var(--Grey);
+    border-radius: 5px;
 }

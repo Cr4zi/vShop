@@ -13,6 +13,22 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "pages", "coming_soon.html"))
 })
 
+app.get("/home", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "pages", "home.html"))
+})
+
+app.get("/@me", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "pages", "home_logged_in.html"))
+})
+
+app.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "pages", "login.html"))
+});
+
+app.get("/signup", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "pages", "signup.html"))
+});
+
 app.get("/assets/membercount.json", (req, res) => {
     res.send({
         status: 200,

@@ -1,0 +1,7 @@
+.content {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 150px;
+}
